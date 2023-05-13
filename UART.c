@@ -28,6 +28,37 @@ void UART0_Init(void){
 
 }
 
+char UART0_RecieveChar (void){
+    while ((UART0_FR_R & 0x10) !=0);
+    return (char)(UART0_DR_R & 0xFF);
+}
+
+void UART0_TransmitChar (char data){
+    while ((UART0_FR_R & 0x20) !=0) {};
+  UART0_DR_R = data;
+}
+
+void UART0_TransmitString(char *str){                              
+  while(*str){
+    UART0_TransmitChar(*str);
+    str++;
+  }
+}
+
+void UART0_ReceiveString(char* str, char stopCh) {
+    int  i = 0;
+
+    str[i] = UART0_RecieveChar();
+
+    while (str[i] != stopCh)
+    {
+        i++;
+        str[i] = UART0_RecieveChar();
+    }
+    str[i] = '\0';
+}
+
+
 //UART5 initialization   -->> pins E4,E5
 void UART5_Init(void){
 
@@ -55,7 +86,29 @@ char UART5_RecieveChar (void){
     return (char)(UART5_DR_R & 0xFF);
 }
 
+
 void UART5_TransmitChar (char data){
     while ((UART5_FR_R & 0x20) !=0) {};
   UART5_DR_R = data;
 }
+
+
+void UART5_TransmitString(char *str){                              
+  while(*str){
+    UART5_TransmitChar(*str);
+    str++;
+  }
+}
+void UART5_ReceiveString(char *str, char stopCh){      
+     int  i = 0;
+
+       str[i] = UART5_RecieveChar();
+
+       while(str[i] != stopCh)
+       {
+           i++;
+           str[i] =  UART5_RecieveChar();
+       }
+     str[i] = '\0';
+}
+
