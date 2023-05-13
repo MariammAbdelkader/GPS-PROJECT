@@ -15,7 +15,7 @@ double lattB=30.063447,longB=31.279826;
 //float total_distance=0;
 double distance=0;
    //char d;
-extern float lattx,longx,lattA,longA;
+//extern float lattx,longx,lattA,longA;
 
 #include <stdio.h>
 #include <string.h>
