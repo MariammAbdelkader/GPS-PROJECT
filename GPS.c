@@ -18,3 +18,23 @@ float a= pow(sin(lattdiff/2),2)+cos(lattA_Rad)*cos(lattB_Rad)*pow(sin(longdiff/2
 double c= 2*atan2(sqrt(a),sqrt(1-a));
 return 6371000*c;
 }
+
+void check(){
+    char i=0;
+     do{
+ while( UART5_RecieveChar ()!= GPS_Logname[i]);
+    i++;
+}while(i!=6);
+    
+    double toDegree(double angle){
+    int degree = (int)angle/100 ;
+     double minutes = angle -(double)degree*100;
+        return (degree+(minutes/60)) ;
+}
+
+
+double toRad(double angle){
+
+    return angle* (PI/180.0);
+}
+
