@@ -15,7 +15,7 @@ double lattB=30.063447,longB=31.279826;
 //float total_distance=0;
 double distance=0;
    //char d;
-
+extern float lattx,longx,lattA,longA;
 
 #include <stdio.h>
 #include <string.h>
@@ -67,7 +67,7 @@ int main(){
     GPIOF_Init();
     UART0_Init();
     UART5_Init();
-
+ // edit_coor(); (to calc total distance)
 
 
 while (1){
@@ -80,6 +80,7 @@ while (1){
    distance = GPS_getdistance( toDegree(longA), toDegree (lattA), longB,  lattB);
     
     //total_distance +=  GPS_getdistance(lattx,longx,lattA,longA);
+    // edit_coor(); (to calc total distance)
     //void NumSplit( double counted)
 
      LED_Conditions(distance);
