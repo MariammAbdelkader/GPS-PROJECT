@@ -4,7 +4,7 @@
 #include "UART.h"
 #include <stdbool.h>
 #include <stdlib.h>
-
+//float lattx,longx;
 
 #define PI 3.1415926535
 #define Earth_radius 6371000;
@@ -163,3 +163,35 @@ switch(c){
 
     }
   }
+
+  
+ /*void edit_coor(){
+
+char no_Token=0;
+    token= strtok(GPS, ",");
+
+    do{
+        strcpy(GPS_final[no_Token],token);
+        token=strtok(NULL,",");
+        no_Token++;
+    } while(token!=NULL);
+
+    if(strcmp(GPS_final[1],"A")==0){
+
+        if (strcmp(GPS_final[3], "N" )==0)
+
+    lattA= atof(GPS_final[2]);
+        else
+            lattA= -  atof(GPS_final[2]);
+
+            if (strcmp(GPS_final[5], "E" )==0)
+
+   longA= atof(GPS_final[4]);
+        else
+      longA= -  atof(GPS_final[4]);
+    }
+
+    lattx=lattA;
+    longx=longA;
+
+}*/
