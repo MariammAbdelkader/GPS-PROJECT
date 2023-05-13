@@ -1,3 +1,21 @@
+#include "GPS.h"
+#include <math.h>
+#include <string.h>
+#include "UART.h"
+#include <stdbool.h>
+#include <stdlib.h>
+
+
+#define PI 3.1415926535
+#define Earth_radius 6371000;
+char GPS[80];
+char GPS_Logname[]= "$GPRMC,";
+char GPS_final [10][20];
+char * token;
+double longA,lattA, lattfA,longfA ;
+char c,valid,EW,NS;
+  char longA_recieve[15],lattA_recieve[15],speed[15];
+
 double GPS_getdistance(double longA, double lattA, double longB, double lattB){
     //calculating Radian angle for the parameters
 double longA_Rad= toRad(longA);
