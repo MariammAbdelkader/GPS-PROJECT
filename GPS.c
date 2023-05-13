@@ -57,7 +57,7 @@ double toRad(double angle){
 }
 
   
-void GPS_Read(){
+/*void GPS_Read(){
 char receivedChar;
     char i=0;
 
@@ -106,5 +106,60 @@ void GPS_final(){
 }
 
 
+}*/
+  
+  void GPS_Read(){
+    //char i=0;
+    char flag=1;
+    char receivedChar;
+       check();
+     while (1)
+         {
 
+             if(flag){
+    receivedChar =  UART5_RecieveChar();
+
+    if(receivedChar==',')
+    {
+        c++;
+    }
 }
+switch(c){
+
+
+
+    case 1: valid= UART5_RecieveChar();
+         break;
+    case 2: UART5_ReceiveString(lattA_recieve,','); c++; flag=0;
+         break;
+    case 3: NS=  UART5_RecieveChar(); flag=1;
+         break;
+    case 4: UART5_ReceiveString(longA_recieve,','); c++; flag=0;
+         break;
+    case 5: EW= UART5_RecieveChar(); flag=1;
+         break;
+    case 6: UART5_ReceiveString(speed,','); c++; flag=0;
+         break;
+}
+    if(c==7) break;
+}
+
+            if(valid=='A'){
+
+        //if (NS == "N" ))
+
+        lattA= atof(lattA_recieve);
+        //else
+            //lattA = -  atof(lattA_recieve);
+
+            //if (EW=="E" )
+
+    longA= atof(longA_recieve);
+    //  else
+    //  longA= -  atof(longA_recieve);
+    //
+
+
+
+    }
+  }
