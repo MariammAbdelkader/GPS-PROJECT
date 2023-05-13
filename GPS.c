@@ -56,3 +56,55 @@ double toRad(double angle){
     return angle* (PI/180.0);
 }
 
+  
+void GPS_Read(){
+char receivedChar;
+    char i=0;
+
+
+do{
+ while( UART0_ReadChar()!= GPS_Logname[i]);
+    i++;
+}while(i!=6);
+
+
+strcpy(GPS, "")
+
+
+do{
+    char GPScount=0;
+    receivedChar = UART0_ReadChar();
+    GPS[GPScount++]= receivedChar;
+} while(receivedChar != '*');
+}
+
+void GPS_final(){
+
+    char no_Token=0;
+    token= strtok(GPS, ",");
+
+    do{
+        strcpy(GPS_final[no_Token],token);
+        token=strtok(NULL,",");
+        no_Token++;
+    } while(token!=NULL);
+
+    if(strcmp(GPS_final[1],"A")==0){
+
+        if (strcmp(GPS_final[3], "N" )==0)
+
+        currentlatt= atof(Gps_final[2]);
+        else
+            currentlatt= -  atof(Gps_final[2]);
+
+            if (strcmp(GPS_final[5], "E" )==0)
+
+        currentlong= atof(Gps_final[4]);
+        else
+            currentlong= -  atof(Gps_final[4]);
+    }
+}
+
+
+
+}
