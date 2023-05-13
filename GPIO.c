@@ -16,3 +16,20 @@ void GPIOF_Init(){
 				GPIO_PORTF_DATA_R &= ~0x0E;      //Intializes the LEDs to be off
 		    GPIO_PORTF_PUR_R = 0x11;        //specifiy pull up resistance for PF4,PF0
 }   
+
+void LED_Conditions(double distance){
+	if(distance<=1){      
+		GPIO_PORTF_DATA_R &= ~0X0E;		   	// Stop all active LEDs
+	    GPIO_PORTF_DATA_R |= GREEN;			// Turn on this led
+	}
+	if(distance<5 && distance>1){
+		GPIO_PORTF_DATA_R &= ~0X0E;		  	// Stop all active LEDs
+	    GPIO_PORTF_DATA_R |= BLUE;			// Turn on this led
+	}
+	if(distance>=5){
+       GPIO_PORTF_DATA_R &= ~0X0E;			// Stop all active LEDs
+	   GPIO_PORTF_DATA_R |= RED;			   // Turn on this led
+	}
+}
+	
+	
